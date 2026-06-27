@@ -91,6 +91,7 @@ export type Project = {
   bastlDate?: string;
   bastDate?: string;
   progressHistory?: ProgressUpdate[];
+  updatedAt?: number;
 };
 
 export type User = {
