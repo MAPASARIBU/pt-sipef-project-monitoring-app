@@ -1,0 +1,1162 @@
+{
+  "regions": [
+    {
+      "id": "1",
+      "name": "HEAD OFFICE (HO)",
+      "type": "HO"
+    },
+    {
+      "id": "2",
+      "name": "NORTH SUMATERA (NS)",
+      "type": "Operasional"
+    },
+    {
+      "id": "3",
+      "name": "BENGKULU (BK)",
+      "type": "Operasional"
+    },
+    {
+      "id": "4",
+      "name": "SOUTH SUMATERA (SS)",
+      "type": "Operasional"
+    }
+  ],
+  "units": [
+    {
+      "id": "1781945251035",
+      "regionId": "3",
+      "name": "BUNGA TANJUNG POM",
+      "abbreviation": "BTOM",
+      "type": "Mill"
+    },
+    {
+      "id": "1781945267994",
+      "regionId": "3",
+      "name": "MUKO MUKO POM",
+      "abbreviation": "MMOM",
+      "type": "Mill"
+    },
+    {
+      "id": "1781945281239",
+      "regionId": "3",
+      "name": "BUNGA TANJUNG ESTATE",
+      "abbreviation": "BTEE",
+      "type": "Estate"
+    },
+    {
+      "id": "1781945311572",
+      "regionId": "3",
+      "name": "RMO BK",
+      "abbreviation": "ROBK",
+      "type": "RMO"
+    },
+    {
+      "id": "17819457219660",
+      "regionId": "3",
+      "name": "SUNGAI TERAMANG ESTATE",
+      "abbreviation": "STGE",
+      "type": "Estate"
+    },
+    {
+      "id": "17819457219661",
+      "regionId": "3",
+      "name": "AIR BIKUK ESTATE",
+      "abbreviation": "ABKE",
+      "type": "Estate"
+    },
+    {
+      "id": "17819457219662",
+      "regionId": "3",
+      "name": "BATU KUDA ESTATE",
+      "abbreviation": "BKDE",
+      "type": "Estate"
+    },
+    {
+      "id": "17819457219663",
+      "regionId": "3",
+      "name": "AIR BULUH ESTATE",
+      "abbreviation": "ABEE",
+      "type": "Estate"
+    },
+    {
+      "id": "17819457219664",
+      "regionId": "3",
+      "name": "MALIN DEMAN ESTATE",
+      "abbreviation": "MDEE",
+      "type": "Estate"
+    },
+    {
+      "id": "1782466632957",
+      "regionId": "2",
+      "name": "BUKIT MARAJA POM",
+      "abbreviation": "BMOM",
+      "type": "Mill"
+    },
+    {
+      "id": "1782466653784",
+      "regionId": "2",
+      "name": "PARLABIAN POM",
+      "abbreviation": "PLOM",
+      "type": "Mill"
+    },
+    {
+      "id": "1782466667972",
+      "regionId": "2",
+      "name": "UMBUL MAS POM",
+      "abbreviation": "UMWM",
+      "type": "Mill"
+    },
+    {
+      "id": "1782466694253",
+      "regionId": "2",
+      "name": "BUKIT MARAJA ESTATE",
+      "abbreviation": "BMEE",
+      "type": "Estate"
+    },
+    {
+      "id": "1782466725778",
+      "regionId": "4",
+      "name": "DENDY MARKER POM",
+      "abbreviation": "DMOM",
+      "type": "Mill"
+    },
+    {
+      "id": "1782466741121",
+      "regionId": "4",
+      "name": "AGRO MUARA RUPIT POM",
+      "abbreviation": "AMRM",
+      "type": "Mill"
+    },
+    {
+      "id": "1782469035183",
+      "regionId": "2",
+      "name": "REGIONAL OFFICE NS",
+      "abbreviation": "RMONS",
+      "type": "RMO"
+    },
+    {
+      "id": "1782469064786",
+      "regionId": "4",
+      "name": "REGIONAL OFFICE SOUTH SUMATERA",
+      "abbreviation": "RMOSS",
+      "type": "RMO"
+    }
+  ],
+  "roles": [
+    {
+      "id": "1",
+      "name": "Head of Operation",
+      "accessLevel": "view"
+    },
+    {
+      "id": "2",
+      "name": "Deputy Director Engineering",
+      "accessLevel": "view"
+    },
+    {
+      "id": "3",
+      "name": "Regional Director",
+      "accessLevel": "view"
+    },
+    {
+      "id": "4",
+      "name": "Regional Control Mill",
+      "accessLevel": "view"
+    },
+    {
+      "id": "5",
+      "name": "Regional Control Estate",
+      "accessLevel": "view"
+    },
+    {
+      "id": "6",
+      "name": "Mill Manager",
+      "accessLevel": "view"
+    },
+    {
+      "id": "7",
+      "name": "Estate Manager",
+      "accessLevel": "view"
+    },
+    {
+      "id": "8",
+      "name": "Project Manager RMO",
+      "accessLevel": "edit"
+    },
+    {
+      "id": "9",
+      "name": "Assistant Kepala Mill",
+      "accessLevel": "edit"
+    },
+    {
+      "id": "10",
+      "name": "Assistant Kepala Estate",
+      "accessLevel": "edit"
+    },
+    {
+      "id": "11",
+      "name": "Office Assistant Mill",
+      "accessLevel": "edit"
+    },
+    {
+      "id": "12",
+      "name": "Office Assistant Estate",
+      "accessLevel": "edit"
+    },
+    {
+      "id": "13",
+      "name": "Staff Engineering HO Civil",
+      "accessLevel": "edit"
+    },
+    {
+      "id": "14",
+      "name": "Staff Engineering HO Mechanical",
+      "accessLevel": "edit"
+    },
+    {
+      "id": "15",
+      "name": "Staff Engineering HO Electrical",
+      "accessLevel": "edit"
+    },
+    {
+      "id": "16",
+      "name": "Staff Engineering HO Heavy Equipment",
+      "accessLevel": "edit"
+    },
+    {
+      "id": "17",
+      "name": "Staff Project Civil RMO",
+      "accessLevel": "edit"
+    },
+    {
+      "id": "18",
+      "name": "Administrator",
+      "accessLevel": "admin"
+    },
+    {
+      "id": "19",
+      "name": "Director Engineering",
+      "accessLevel": "view"
+    },
+    {
+      "id": "20",
+      "name": "Staff Purchasing",
+      "accessLevel": "edit"
+    },
+    {
+      "id": "21",
+      "name": "Project Manager Engineering HO",
+      "accessLevel": "edit"
+    }
+  ],
+  "users": [
+    {
+      "id": "u1",
+      "name": "MAPASARIBU",
+      "roleId": "6",
+      "unitId": "1781945251035",
+      "password": "MAPASARIBU123"
+    },
+    {
+      "id": "u2",
+      "name": "EFENDI",
+      "roleId": "11",
+      "unitId": "1781945251035",
+      "password": "EFENDI@123"
+    },
+    {
+      "id": "u4",
+      "name": "MMOM_MANAGER",
+      "roleId": "6",
+      "unitId": "1781945267994",
+      "password": "123"
+    },
+    {
+      "id": "u5",
+      "name": "HO_MECH",
+      "roleId": "14",
+      "password": "123"
+    },
+    {
+      "id": "1782447104290",
+      "name": "SUWI",
+      "password": "SUWI@123",
+      "roleId": "21"
+    },
+    {
+      "id": "1782447127865",
+      "name": "AYU",
+      "password": "AYU@123",
+      "roleId": "14"
+    },
+    {
+      "id": "1782448878933",
+      "name": "ZAMRONI",
+      "password": "ZAMRONI@123",
+      "roleId": "8",
+      "unitId": "1781945311572"
+    },
+    {
+      "id": "1782468869697",
+      "name": "KARMILA",
+      "password": "KARMILA@123",
+      "roleId": "6",
+      "unitId": "1782466632957"
+    },
+    {
+      "id": "1782468900170",
+      "name": "JANSEN",
+      "password": "JANSEN@123",
+      "roleId": "6",
+      "unitId": "1782466725778"
+    },
+    {
+      "id": "1782469103170",
+      "name": "ILHAM",
+      "password": "ILHAM",
+      "roleId": "8",
+      "unitId": "1782469064786"
+    },
+    {
+      "id": "1782469131274",
+      "name": "AZIZ",
+      "password": "AZIZ@123",
+      "roleId": "17",
+      "unitId": "1782469064786"
+    },
+    {
+      "id": "1782565417135",
+      "name": "BERNARDO",
+      "password": "BERNARDO@123",
+      "roleId": "3",
+      "regionId": "3"
+    }
+  ],
+  "projects": [
+    {
+      "category": "CAPEX",
+      "type": "MECHANICAL",
+      "execution": "NON LEBARAN",
+      "planQty": 2,
+      "planPricePerQty": 130000000,
+      "unitId": "1781945251035",
+      "station": "Press",
+      "name": "GANTI DIGESTER",
+      "id": "17824483456701",
+      "createdAt": "2026-06-26T04:32:23.808Z",
+      "updatedAt": 17824483456701
+    },
+    {
+      "category": "CAPEX",
+      "type": "MECHANICAL",
+      "execution": "NON LEBARAN",
+      "planQty": 1,
+      "planPricePerQty": 120000000,
+      "unitId": "1781945251035",
+      "station": "Thresher",
+      "name": "GANTRI",
+      "id": "17824483456700",
+      "createdAt": "2026-06-26T04:32:03.274Z",
+      "updatedAt": 17824483456700
+    },
+    {
+      "category": "CAPEX",
+      "type": "MECHANICAL",
+      "execution": "LEBARAN",
+      "planQty": 1,
+      "planPricePerQty": 300000000,
+      "unitId": "1782466741121",
+      "station": "Press",
+      "name": "REPLACMENT FRUIT DISTRIBUTING CONVEYOR",
+      "id": "17824692263550",
+      "createdAt": "2026-06-26T10:20:24.497Z",
+      "updatedAt": 1782569565288,
+      "boqFiles": [
+        "/uploads/1782469254243-677622650-Aplikasi_Warung_Makan_Online_Multi_User.pdf"
+      ],
+      "drawingFiles": [
+        "/uploads/1782469254264-84552995-Aplikasi_Warung_Makan_Online_Multi_User.pdf"
+      ],
+      "docComplete": true,
+      "continueProcess": true,
+      "docSubmissionDate": "2026-06-26",
+      "tenderDateToPsd": "2026-06-26",
+      "invitedPts": [
+        {
+          "id": "pt-1782469472869-0",
+          "ptName": "PT INDOPALMA AGRO PERSADA",
+          "email": "indopalma.agropersada@gmail.com",
+          "contactName": "Ramiono",
+          "contactPhone": "081361111302",
+          "initialBid": 350000000
+        },
+        {
+          "id": "pt-1782469472869-1",
+          "ptName": "PT SAWITECH",
+          "email": "albert.sawitech@yahoo.com",
+          "contactName": "Albert",
+          "contactPhone": "08116635591",
+          "initialBid": 320000000
+        }
+      ],
+      "tenderPsdDate": "2026-06-27",
+      "openTenderDate": "",
+      "tenderResultWinner": "PT SAWITECH",
+      "finalTenderPrice": 315000000,
+      "isBiddingFinished": true,
+      "contractNumber": "HO-NS-AMRM260001",
+      "plannedDuration": "12",
+      "actualQty": 1,
+      "actualCostPerUnit": 315000000,
+      "prNo": "AMRO0001",
+      "poNo": "AMRPOM0001",
+      "bastlDate": "2026-06-14",
+      "progressHistory": [
+        {
+          "id": "1782569529646",
+          "date": "2026-06-27",
+          "percent": 34
+        },
+        {
+          "id": "1782569536455",
+          "date": "2026-06-27",
+          "percent": 64
+        },
+        {
+          "id": "1782569542357",
+          "date": "2026-06-27",
+          "percent": 100
+        }
+      ],
+      "progressPercent": 100,
+      "progressUpdateDate": "2026-06-27",
+      "bastDate": "2026-06-26",
+      "srNo": "SRAMRM0001"
+    },
+    {
+      "id": "proj_mmom_2",
+      "unitId": "1781945267994",
+      "category": "CAPEX",
+      "station": "Boiler",
+      "name": "AUTOFEEDER BOILER",
+      "planQty": 1,
+      "planPricePerQty": 150000000,
+      "type": "MECHANICAL",
+      "execution": "NON LEBARAN",
+      "createdAt": "2026-06-26T03:57:35.990Z",
+      "boqFiles": [
+        "/uploads/1782449256451-263628539-PT_Sipef_-_Project_Monitoring.pdf"
+      ],
+      "drawingFiles": [
+        "/uploads/1782449256510-142920409-Print_Struk_Pesanan_2.pdf"
+      ],
+      "docComplete": true,
+      "continueProcess": true,
+      "docSubmissionDate": "2026-06-26",
+      "tenderDateToPsd": "2026-06-26",
+      "invitedPts": [
+        {
+          "id": "pt-1782449324864-0",
+          "ptName": "PT TRIROYAL",
+          "email": "triroyal@yahoo.co.id",
+          "contactName": "Joni",
+          "contactPhone": "081265439995"
+        },
+        {
+          "id": "pt-1782449324864-1",
+          "ptName": "PT INDOPALMA AGRO PERSADA",
+          "email": "indopalma.agropersada@gmail.com",
+          "contactName": "Ramiono",
+          "contactPhone": "081361111302"
+        },
+        {
+          "id": "pt-1782449324864-2",
+          "ptName": "PT SAWITECH",
+          "email": "albert.sawitech@yahoo.com",
+          "contactName": "Albert",
+          "contactPhone": "08116635591"
+        },
+        {
+          "id": "pt-1782449324864-3",
+          "ptName": "PT SWASTIKA LAUTAN PERSADA",
+          "email": "general@swastika.co.id",
+          "contactName": "Andi",
+          "contactPhone": "085358007106"
+        }
+      ],
+      "tenderPsdDate": "2026-06-26",
+      "openTenderDate": "",
+      "tenderResultWinner": "PT SAWITECH",
+      "finalTenderPrice": 150000000,
+      "isBiddingFinished": true,
+      "contractNumber": "HO-BK-MMOM26004",
+      "plannedDuration": "12",
+      "actualQty": 1,
+      "actualCostPerUnit": 150000000,
+      "updatedAt": 1782568876648,
+      "prNo": "MMOM0001",
+      "poNo": "MMPOM0001",
+      "bastlDate": "2026-06-24",
+      "progressHistory": [
+        {
+          "id": "1782568820532",
+          "date": "2026-06-27",
+          "percent": 0
+        },
+        {
+          "id": "1782568821581",
+          "date": "2026-06-27",
+          "percent": 0
+        },
+        {
+          "id": "1782568824400",
+          "date": "2026-06-27",
+          "percent": 34
+        },
+        {
+          "id": "1782568848352",
+          "date": "2026-06-27",
+          "percent": 59
+        }
+      ],
+      "progressPercent": 59,
+      "progressUpdateDate": "2026-06-27"
+    },
+    {
+      "category": "CAPEX",
+      "type": "MECHANICAL",
+      "execution": "NON LEBARAN",
+      "planQty": 1,
+      "planPricePerQty": 7900000000,
+      "unitId": "1781945267994",
+      "station": "Boiler",
+      "name": "MOVING FLOOR",
+      "id": "17824490728980",
+      "createdAt": "2026-06-26T04:44:31.298Z",
+      "boqFiles": [
+        "/uploads/1782449524136-649950237-Print_Struk_Pesanan.pdf"
+      ],
+      "drawingFiles": [
+        "/uploads/1782449524182-952566557-PT_Sipef_-_Project_Monitoring.pdf"
+      ],
+      "docComplete": true,
+      "continueProcess": true,
+      "docSubmissionDate": "2026-06-26",
+      "tenderDateToPsd": "2026-06-26",
+      "invitedPts": [
+        {
+          "id": "pt-1782449608297-0",
+          "ptName": "PT SAWITECH",
+          "email": "albert.sawitech@yahoo.com",
+          "contactName": "Albert",
+          "contactPhone": "08116635591"
+        },
+        {
+          "id": "pt-1782449608297-1",
+          "ptName": "PT INDOPALMA AGRO PERSADA",
+          "email": "indopalma.agropersada@gmail.com",
+          "contactName": "Ramiono",
+          "contactPhone": "081361111302"
+        }
+      ],
+      "tenderPsdDate": "2026-06-26",
+      "openTenderDate": "",
+      "tenderResultWinner": "PT INDOPALMA AGRO PERSADA",
+      "finalTenderPrice": 8000000000,
+      "isBiddingFinished": true,
+      "contractNumber": "HO-BK-MMOM26002",
+      "plannedDuration": "16",
+      "actualQty": 1,
+      "actualCostPerUnit": 8000000000,
+      "updatedAt": 1782568876648,
+      "prNo": "MMOM0002",
+      "poNo": "MMPOM0002",
+      "bastlDate": "2026-06-18",
+      "progressHistory": [
+        {
+          "id": "1782568824963",
+          "date": "2026-06-27",
+          "percent": 0
+        },
+        {
+          "id": "1782568835284",
+          "date": "2026-06-27",
+          "percent": 39
+        },
+        {
+          "id": "1782568857035",
+          "date": "2026-06-27",
+          "percent": 65
+        }
+      ],
+      "progressPercent": 65,
+      "progressUpdateDate": "2026-06-27"
+    },
+    {
+      "id": "proj_mmom_1",
+      "unitId": "1781945267994",
+      "category": "CAPEX",
+      "station": "Clarification",
+      "name": "REPLACEMENT BOARDEST AREA SLUDGE TANK LINE 2",
+      "planQty": 1,
+      "planPricePerQty": 100000000,
+      "type": "MECHANICAL",
+      "execution": "NON LEBARAN",
+      "createdAt": "2026-06-26T03:57:35.990Z",
+      "boqFiles": [
+        "/uploads/1782449256289-108371350-dfd.pdf"
+      ],
+      "drawingFiles": [
+        "/uploads/1782449256374-184386787-PT_Sipef_-_Project_Monitoring.pdf"
+      ],
+      "docComplete": true,
+      "continueProcess": true,
+      "docSubmissionDate": "2026-06-26",
+      "tenderDateToPsd": "2026-06-26",
+      "invitedPts": [
+        {
+          "id": "pt-1782449324864-0",
+          "ptName": "PT TRIROYAL",
+          "email": "triroyal@yahoo.co.id",
+          "contactName": "Joni",
+          "contactPhone": "081265439995"
+        },
+        {
+          "id": "pt-1782449324864-1",
+          "ptName": "PT INDOPALMA AGRO PERSADA",
+          "email": "indopalma.agropersada@gmail.com",
+          "contactName": "Ramiono",
+          "contactPhone": "081361111302"
+        },
+        {
+          "id": "pt-1782449324864-2",
+          "ptName": "PT SAWITECH",
+          "email": "albert.sawitech@yahoo.com",
+          "contactName": "Albert",
+          "contactPhone": "08116635591"
+        },
+        {
+          "id": "pt-1782449324864-3",
+          "ptName": "PT SWASTIKA LAUTAN PERSADA",
+          "email": "general@swastika.co.id",
+          "contactName": "Andi",
+          "contactPhone": "085358007106"
+        }
+      ],
+      "tenderPsdDate": "2026-06-26",
+      "openTenderDate": "",
+      "tenderResultWinner": "PT TRIROYAL",
+      "finalTenderPrice": 100000000,
+      "isBiddingFinished": true,
+      "contractNumber": "HK-BK-MMOM26001",
+      "plannedDuration": "12",
+      "actualQty": 1,
+      "actualCostPerUnit": 100000000,
+      "updatedAt": 1782568426143,
+      "prNo": "MMOM0004",
+      "poNo": "MMPOM0004",
+      "bastlDate": "2026-06-16"
+    },
+    {
+      "id": "17819658915270",
+      "unitId": "1781945267994",
+      "category": "CAPEX",
+      "station": "Clarification",
+      "name": "NEW BOILER",
+      "planQty": 1,
+      "planPricePerQty": 31000000000,
+      "type": "MECHANICAL",
+      "execution": "NON LEBARAN",
+      "createdAt": "2026-06-25T14:33:04.895Z",
+      "docComplete": true,
+      "continueProcess": true,
+      "tenderResultWinner": "PT INDOPALMA AGRO PERSADA",
+      "finalTenderPrice": 31000000000,
+      "contractNumber": "HO-BK-MMOM-0001",
+      "actualQty": 1,
+      "actualCostPerUnit": 31000000000,
+      "tenderDateToPsd": "2026-06-25",
+      "invitedPts": [
+        {
+          "id": "pt-1782447394613-0",
+          "ptName": "PT INDOPALMA AGRO PERSADA",
+          "email": "indopalma.agropersada@gmail.com",
+          "contactName": "Ramiono",
+          "contactPhone": "081361111302"
+        },
+        {
+          "id": "pt-1782447394613-1",
+          "ptName": "PT SAWITECH",
+          "email": "albert.sawitech@yahoo.com",
+          "contactName": "Albert",
+          "contactPhone": "08116635591"
+        }
+      ],
+      "updatedAt": 1782568426142,
+      "tenderPsdDate": "2026-06-27",
+      "openTenderDate": "",
+      "isBiddingFinished": true,
+      "prNo": "MMOM0003",
+      "poNo": "MMPOM0003",
+      "bastlDate": "2026-06-14"
+    },
+    {
+      "id": "proj_btom_1",
+      "unitId": "1781945251035",
+      "category": "CAPEX",
+      "name": "FFB CAGE 4 TON",
+      "planQty": 10,
+      "planPricePerQty": 74000000,
+      "type": "MECHANICAL",
+      "execution": "NON LEBARAN",
+      "createdAt": "2026-06-26T03:57:35.990Z",
+      "boqFiles": [
+        "/uploads/1782446398197-26421724-Aplikasi_Warung_Makan_Online_Multi_User.pdf"
+      ],
+      "drawingFiles": [
+        "/uploads/1782446398232-440753543-dfd.pdf"
+      ],
+      "docComplete": true,
+      "continueProcess": true,
+      "docSubmissionDate": "2026-06-26",
+      "tenderDateToPsd": "2026-06-26",
+      "invitedPts": [
+        {
+          "id": "pt-1782447324857-0",
+          "ptName": "PT TRIROYAL",
+          "email": "triroyal@yahoo.co.id",
+          "contactName": "Joni",
+          "contactPhone": "081265439995",
+          "initialBid": 740000000,
+          "initialBidFile": "Aplikasi Warung Makan Online Multi User.pdf",
+          "isInvitedToRev1": false
+        },
+        {
+          "id": "pt-1782447324857-1",
+          "ptName": "PT INDOPALMA AGRO PERSADA",
+          "email": "indopalma.agropersada@gmail.com",
+          "contactName": "Ramiono",
+          "contactPhone": "081361111302",
+          "initialBid": 600000000,
+          "isInvitedToRev1": true,
+          "revisedBid1": 700000000
+        },
+        {
+          "id": "pt-1782447324857-2",
+          "ptName": "PT SAWITECH",
+          "email": "albert.sawitech@yahoo.com",
+          "contactName": "Albert",
+          "contactPhone": "08116635591",
+          "initialBid": 700000000,
+          "initialBidFile": "dfd.pdf",
+          "isInvitedToRev1": true,
+          "revisedBid1": 750000000
+        },
+        {
+          "id": "pt-1782447324857-3",
+          "ptName": "PT SWASTIKA LAUTAN PERSADA",
+          "email": "general@swastika.co.id",
+          "contactName": "Andi",
+          "contactPhone": "085358007106",
+          "initialBid": 800000000,
+          "isInvitedToRev1": false
+        }
+      ],
+      "tenderPsdDate": "2026-06-26",
+      "openTenderDate": "",
+      "tenderResultWinner": "PT INDOPALMA AGRO PERSADA",
+      "finalTenderPrice": 700000000,
+      "isBiddingFinished": true,
+      "contractNumber": "HO-BK-BTOM26001",
+      "plannedDuration": "12",
+      "actualQty": 1,
+      "actualCostPerUnit": 700000000,
+      "updatedAt": 1782567996899,
+      "prNo": "BTOM0003",
+      "poNo": "BTPOM0003",
+      "bastlDate": "2026-06-07",
+      "progressHistory": [
+        {
+          "id": "1782464697614",
+          "date": "2026-06-26",
+          "percent": 17
+        },
+        {
+          "id": "1782464940733",
+          "date": "2026-06-26",
+          "percent": 64
+        },
+        {
+          "id": "1782465794548",
+          "date": "2026-06-26",
+          "percent": 87
+        },
+        {
+          "id": "1782567943557",
+          "date": "2026-06-27",
+          "percent": 100
+        }
+      ],
+      "progressPercent": 100,
+      "progressUpdateDate": "2026-06-27",
+      "bastDate": "2026-06-27",
+      "srNo": "SRBTOM0005"
+    },
+    {
+      "id": "proj_btom_4",
+      "unitId": "1781945251035",
+      "category": "CAPEX",
+      "name": "UPGRADE TIPPLER",
+      "planQty": 1,
+      "planPricePerQty": 1300000000,
+      "type": "MECHANICAL",
+      "execution": "NON LEBARAN",
+      "createdAt": "2026-06-26T03:57:35.990Z",
+      "boqFiles": [
+        "/uploads/1782448385183-564807723-Print_Struk_Pesanan.pdf"
+      ],
+      "drawingFiles": [
+        "/uploads/1782448385238-307472143-PT_Sipef_-_Project_Monitoring.pdf"
+      ],
+      "docComplete": true,
+      "continueProcess": true,
+      "docSubmissionDate": "2026-06-26",
+      "tenderDateToPsd": "2026-06-26",
+      "invitedPts": [
+        {
+          "id": "pt-1782448414199-0",
+          "ptName": "PT TRIROYAL",
+          "email": "triroyal@yahoo.co.id",
+          "contactName": "Joni",
+          "contactPhone": "081265439995"
+        },
+        {
+          "id": "pt-1782448414199-1",
+          "ptName": "PT INDOPALMA AGRO PERSADA",
+          "email": "indopalma.agropersada@gmail.com",
+          "contactName": "Ramiono",
+          "contactPhone": "081361111302"
+        },
+        {
+          "id": "pt-1782448414199-2",
+          "ptName": "PT SAWITECH",
+          "email": "albert.sawitech@yahoo.com",
+          "contactName": "Albert",
+          "contactPhone": "08116635591"
+        },
+        {
+          "id": "pt-1782448414199-3",
+          "ptName": "PT SWASTIKA LAUTAN PERSADA",
+          "email": "general@swastika.co.id",
+          "contactName": "Andi",
+          "contactPhone": "085358007106"
+        }
+      ],
+      "tenderPsdDate": "2026-06-26",
+      "openTenderDate": "",
+      "tenderResultWinner": "PT SAWITECH",
+      "finalTenderPrice": 1300000000,
+      "isBiddingFinished": true,
+      "contractNumber": "HO-BK-BTOM26003",
+      "plannedDuration": "12",
+      "actualQty": 1,
+      "actualCostPerUnit": 1300000000,
+      "updatedAt": 1782567996899,
+      "prNo": "BTOM0001",
+      "poNo": "BTPOM0001",
+      "bastlDate": "2026-06-26",
+      "progressHistory": [
+        {
+          "id": "1782464047004",
+          "date": "2026-06-26",
+          "percent": 12
+        },
+        {
+          "id": "1782464668324",
+          "date": "2026-06-26",
+          "percent": 22
+        },
+        {
+          "id": "1782465788042",
+          "date": "2026-06-26",
+          "percent": 45
+        },
+        {
+          "id": "1782567950667",
+          "date": "2026-06-27",
+          "percent": 100
+        }
+      ],
+      "progressPercent": 100,
+      "progressUpdateDate": "2026-06-27",
+      "bastDate": "2026-06-27",
+      "srNo": "SRBTOM0004"
+    },
+    {
+      "id": "proj_btom_2",
+      "unitId": "1781945251035",
+      "category": "CAPEX",
+      "name": "GANTI PIPA EXHAUST STERILIZER",
+      "planQty": 1,
+      "planPricePerQty": 250000000,
+      "type": "MECHANICAL",
+      "execution": "NON LEBARAN",
+      "createdAt": "2026-06-26T03:57:35.990Z",
+      "boqFiles": [
+        "/uploads/1782446398273-843572692-EER.pdf"
+      ],
+      "drawingFiles": [
+        "/uploads/1782446398353-813473161-FFF.pdf"
+      ],
+      "docComplete": true,
+      "continueProcess": true,
+      "docSubmissionDate": "2026-06-26",
+      "tenderDateToPsd": "2026-06-26",
+      "invitedPts": [
+        {
+          "id": "pt-1782447324857-0",
+          "ptName": "PT TRIROYAL",
+          "email": "triroyal@yahoo.co.id",
+          "contactName": "Joni",
+          "contactPhone": "081265439995",
+          "initialBid": 200000000,
+          "initialBidFile": "Aplikasi Warung Makan Online Multi User.pdf",
+          "isInvitedToRev1": true,
+          "revisedBid1": 250000000
+        },
+        {
+          "id": "pt-1782447324857-1",
+          "ptName": "PT INDOPALMA AGRO PERSADA",
+          "email": "indopalma.agropersada@gmail.com",
+          "contactName": "Ramiono",
+          "contactPhone": "081361111302",
+          "initialBid": 259000000,
+          "isInvitedToRev1": true,
+          "revisedBid1": 200000000
+        },
+        {
+          "id": "pt-1782447324857-2",
+          "ptName": "PT SAWITECH",
+          "email": "albert.sawitech@yahoo.com",
+          "contactName": "Albert",
+          "contactPhone": "08116635591",
+          "initialBid": 300000000,
+          "isInvitedToRev1": false
+        },
+        {
+          "id": "pt-1782447324857-3",
+          "ptName": "PT SWASTIKA LAUTAN PERSADA",
+          "email": "general@swastika.co.id",
+          "contactName": "Andi",
+          "contactPhone": "085358007106",
+          "initialBid": 400000000,
+          "isInvitedToRev1": false
+        }
+      ],
+      "tenderPsdDate": "2026-06-26",
+      "openTenderDate": "",
+      "tenderResultWinner": "PT TRIROYAL",
+      "finalTenderPrice": 220000000,
+      "isBiddingFinished": true,
+      "contractNumber": "HO-BK-BTOM26002",
+      "plannedDuration": "12",
+      "actualQty": 1,
+      "actualCostPerUnit": 220000000,
+      "updatedAt": 1782567921906,
+      "prNo": "BTOM0002",
+      "poNo": "BTPOM0002",
+      "bastlDate": "2026-06-26",
+      "progressHistory": [
+        {
+          "id": "1782464051096",
+          "date": "2026-06-26",
+          "percent": 20
+        },
+        {
+          "id": "1782464659308",
+          "date": "2026-06-26",
+          "percent": 0
+        },
+        {
+          "id": "1782465779976",
+          "date": "2026-06-26",
+          "percent": 39
+        },
+        {
+          "id": "1782567890556",
+          "date": "2026-06-27",
+          "percent": 100
+        }
+      ],
+      "progressPercent": 100,
+      "progressUpdateDate": "2026-06-27",
+      "bastDate": "2026-06-27",
+      "srNo": "SRBTOM0003"
+    },
+    {
+      "category": "CAPEX",
+      "type": "MECHANICAL",
+      "execution": "LEBARAN",
+      "planQty": 1,
+      "planPricePerQty": 300000000,
+      "unitId": "1782466725778",
+      "station": "Thresher",
+      "name": "REPLACEMENT TIPPLER",
+      "id": "17824684984270",
+      "createdAt": "2026-06-26T10:08:16.688Z",
+      "updatedAt": 1782468498436
+    },
+    {
+      "category": "CAPEX",
+      "type": "MECHANICAL",
+      "execution": "NON LEBARAN",
+      "planQty": 10,
+      "planPricePerQty": 84000000,
+      "unitId": "1782466632957",
+      "station": "Loading Ramp",
+      "name": "FFB CAGE 4 T",
+      "id": "17824684581530",
+      "createdAt": "2026-06-26T10:07:06.658Z",
+      "updatedAt": 1782468458163
+    },
+    {
+      "category": "CAPEX",
+      "type": "MECHANICAL",
+      "execution": "LEBARAN",
+      "planQty": 1,
+      "planPricePerQty": 250000000,
+      "unitId": "1782466632957",
+      "station": "Sterilizer",
+      "name": "GANTI PIPA EXHAUS STERILIZER",
+      "id": "17824684581531",
+      "createdAt": "2026-06-26T10:07:34.619Z",
+      "updatedAt": 1782468458163
+    },
+    {
+      "id": "proj_btom_3",
+      "unitId": "1781945251035",
+      "category": "CAPEX",
+      "name": "REPOSITION BAK CONDENSATE",
+      "planQty": 1,
+      "planPricePerQty": 450000000,
+      "type": "MECHANICAL",
+      "execution": "NON LEBARAN",
+      "createdAt": "2026-06-26T03:57:35.990Z",
+      "boqFiles": [
+        "/uploads/1782448385070-623394708-Aplikasi_Warung_Makan_Online_Multi_User.pdf"
+      ],
+      "drawingFiles": [
+        "/uploads/1782448385131-598699677-EER.pdf"
+      ],
+      "docComplete": true,
+      "continueProcess": true,
+      "docSubmissionDate": "2026-06-26",
+      "tenderDateToPsd": "2026-06-26",
+      "invitedPts": [
+        {
+          "id": "pt-1782448414199-0",
+          "ptName": "PT TRIROYAL",
+          "email": "triroyal@yahoo.co.id",
+          "contactName": "Joni",
+          "contactPhone": "081265439995"
+        },
+        {
+          "id": "pt-1782448414199-1",
+          "ptName": "PT INDOPALMA AGRO PERSADA",
+          "email": "indopalma.agropersada@gmail.com",
+          "contactName": "Ramiono",
+          "contactPhone": "081361111302"
+        },
+        {
+          "id": "pt-1782448414199-2",
+          "ptName": "PT SAWITECH",
+          "email": "albert.sawitech@yahoo.com",
+          "contactName": "Albert",
+          "contactPhone": "08116635591"
+        },
+        {
+          "id": "pt-1782448414199-3",
+          "ptName": "PT SWASTIKA LAUTAN PERSADA",
+          "email": "general@swastika.co.id",
+          "contactName": "Andi",
+          "contactPhone": "085358007106"
+        }
+      ],
+      "tenderPsdDate": "2026-06-26",
+      "openTenderDate": "",
+      "tenderResultWinner": "PT INDOPALMA AGRO PERSADA",
+      "finalTenderPrice": 450000000,
+      "isBiddingFinished": true,
+      "contractNumber": "HO-BK-BTOM26001",
+      "plannedDuration": "12",
+      "actualQty": 1,
+      "actualCostPerUnit": 450000000,
+      "updatedAt": 1782465823019,
+      "prNo": "BTOM0004",
+      "poNo": "BTPOM0004",
+      "bastlDate": "2026-06-15",
+      "progressHistory": [
+        {
+          "id": "1782464702686",
+          "date": "2026-06-26",
+          "percent": 27
+        },
+        {
+          "id": "1782464947101",
+          "date": "2026-06-26",
+          "percent": 100
+        }
+      ],
+      "progressPercent": 100,
+      "progressUpdateDate": "2026-06-26",
+      "bastDate": "2026-06-26",
+      "srNo": "SRBTOM0001"
+    }
+  ],
+  "vendors": [
+    {
+      "id": "v-1782447276837-0",
+      "name": "PT TRIROYAL",
+      "contacts": [
+        {
+          "email": "triroyal@yahoo.co.id",
+          "personName": "Joni",
+          "contactNumber": "081265439995"
+        }
+      ]
+    },
+    {
+      "id": "v-1782447276837-1",
+      "name": "PT INDOPALMA AGRO PERSADA",
+      "contacts": [
+        {
+          "email": "indopalma.agropersada@gmail.com",
+          "personName": "Ramiono",
+          "contactNumber": "081361111302"
+        }
+      ]
+    },
+    {
+      "id": "v-1782447276837-2",
+      "name": "PT SAWITECH",
+      "contacts": [
+        {
+          "email": "albert.sawitech@yahoo.com",
+          "personName": "Albert",
+          "contactNumber": "08116635591"
+        }
+      ]
+    },
+    {
+      "id": "v-1782447276837-3",
+      "name": "PT SWASTIKA LAUTAN PERSADA",
+      "contacts": [
+        {
+          "email": "general@swastika.co.id",
+          "personName": "Andi",
+          "contactNumber": "085358007106"
+        }
+      ]
+    }
+  ]
+}
