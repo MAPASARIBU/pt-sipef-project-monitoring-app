@@ -458,68 +458,60 @@ export default function ContractRealization() {
           <h2 style={{ marginBottom: '1.5rem', color: '#475569' }}>Histori Realisasi Kontrak</h2>
           <p className="text-muted mb-4">Daftar kontrak payung yang sudah diterbitkan beserta proyek di dalamnya.</p>
           
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+          <div className="table-container">
             {Object.keys(historyByContract).length === 0 ? (
               <p className="text-muted">Tidak ada histori kontrak untuk Region / OU ini.</p>
             ) : (
-              Object.entries(historyByContract)
-                .sort((a, b) => {
-                  const maxIdA = Math.max(...a[1].map(p => Number(p.id) || 0));
-                  const maxIdB = Math.max(...b[1].map(p => Number(p.id) || 0));
-                  return maxIdB - maxIdA;
-                })
-                .map(([contractNum, projs]) => {
-                const vendor = projs[0].tenderResultWinner;
-                const totalContractVal = projs.reduce((sum, p) => sum + ((p.actualQty || 0) * (p.actualCostPerUnit || 0)), 0);
-                
-                const sortedProjs = [...projs].sort((a, b) => {
-                  const unitA = data.units.find(x => x.id === a.unitId);
-                  const unitB = data.units.find(x => x.id === b.unitId);
-                  const regionA = data.regions.find(r => r.id === unitA?.regionId);
-                  const regionB = data.regions.find(r => r.id === unitB?.regionId);
-                  const order: { [key: string]: number } = { 'NORTH SUMATERA (NS)': 1, 'BENGKULU (BK)': 2, 'SOUTH SUMATERA (SS)': 3 };
-                  const oA = regionA ? (order[regionA.name] || 99) : 99;
-                  const oB = regionB ? (order[regionB.name] || 99) : 99;
-                  if (oA !== oB) return oA - oB;
-                  const nameA = unitA?.name || '';
-                  const nameB = unitB?.name || '';
-                  if (nameA !== nameB) return nameA.localeCompare(nameB);
-                  const statA = a.station || '';
-                  const statB = b.station || '';
-                  return statA.localeCompare(statB);
-                });
+              <table className="data-table" style={{ fontSize: '0.85rem', margin: 0 }}>
+                <thead style={{ background: '#f1f5f9' }}>
+                  <tr>
+                    <th>No Contract</th>
+                    <th>Vendor</th>
+                    <th>Region</th>
+                    <th>UO</th>
+                    <th>Proyek</th>
+                    <th style={{ textAlign: 'right' }}>Qty</th>
+                    <th style={{ textAlign: 'right' }}>Cost / Unit</th>
+                    <th style={{ textAlign: 'right' }}>Total</th>
+                  </tr>
+                </thead>
+                {Object.entries(historyByContract)
+                  .sort((a, b) => {
+                    const maxIdA = Math.max(...a[1].map(p => Number(p.id) || 0));
+                    const maxIdB = Math.max(...b[1].map(p => Number(p.id) || 0));
+                    return maxIdB - maxIdA;
+                  })
+                  .map(([contractNum, projs]) => {
+                  const vendor = projs[0].tenderResultWinner;
+                  const totalContractVal = projs.reduce((sum, p) => sum + ((p.actualQty || 0) * (p.actualCostPerUnit || 0)), 0);
+                  
+                  const sortedProjs = [...projs].sort((a, b) => {
+                    const unitA = data.units.find(x => x.id === a.unitId);
+                    const unitB = data.units.find(x => x.id === b.unitId);
+                    const regionA = data.regions.find(r => r.id === unitA?.regionId);
+                    const regionB = data.regions.find(r => r.id === unitB?.regionId);
+                    const order: { [key: string]: number } = { 'NORTH SUMATERA (NS)': 1, 'BENGKULU (BK)': 2, 'SOUTH SUMATERA (SS)': 3 };
+                    const oA = regionA ? (order[regionA.name] || 99) : 99;
+                    const oB = regionB ? (order[regionB.name] || 99) : 99;
+                    if (oA !== oB) return oA - oB;
+                    const nameA = unitA?.name || '';
+                    const nameB = unitB?.name || '';
+                    if (nameA !== nameB) return nameA.localeCompare(nameB);
+                    const statA = a.station || '';
+                    const statB = b.station || '';
+                    return statA.localeCompare(statB);
+                  });
 
-                return (
-                  <div key={contractNum} style={{ background: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: '8px', padding: '1.5rem' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem', borderBottom: '1px solid #cbd5e1', paddingBottom: '0.75rem' }}>
-                      <div>
-                        <div style={{ fontSize: '0.85rem', fontWeight: 'bold', color: '#0f172a' }}>Kontrak No: {contractNum}</div>
-                        <div style={{ fontSize: '0.85rem', color: '#475569', fontWeight: 600 }}>Vendor: {vendor}</div>
-                      </div>
-                      <div style={{ textAlign: 'right' }}>
-                        <div style={{ fontSize: '0.85rem', color: '#64748b' }}>Total Nilai Kontrak</div>
-                        <div style={{ fontSize: '0.85rem', fontWeight: 'bold', color: '#0369a1' }}>Rp {totalContractVal.toLocaleString('id-ID')}</div>
-                      </div>
-                    </div>
-                    
-                    <table className="data-table" style={{ fontSize: '0.85rem', margin: 0 }}>
-                      <thead style={{ background: '#f1f5f9' }}>
-                        <tr>
-                          <th>Region</th>
-                          <th>UO</th>
-                          <th>Proyek</th>
-                          <th style={{ textAlign: 'right' }}>Qty</th>
-                          <th style={{ textAlign: 'right' }}>Cost / Unit</th>
-                          <th style={{ textAlign: 'right' }}>Total</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {sortedProjs.map(p => {
-                          const u = data.units.find(x => String(x.id) === String(p.unitId));
-                          const region = data.regions.find(r => r.id === u?.regionId);
-                          const regionAbbr = region ? (region.name.match(/\(([^)]+)\)/)?.[1] || region.name) : '-';
-                          return (
+                  return (
+                    <tbody key={contractNum}>
+                      {sortedProjs.map(p => {
+                        const u = data.units.find(x => String(x.id) === String(p.unitId));
+                        const region = data.regions.find(r => r.id === u?.regionId);
+                        const regionAbbr = region ? (region.name.match(/\(([^)]+)\)/)?.[1] || region.name) : '-';
+                        return (
                           <tr key={p.id}>
+                            <td style={{ fontWeight: 600, color: '#0f172a' }}>{contractNum}</td>
+                            <td>{vendor}</td>
                             <td style={{ fontWeight: 600 }}><span className="badge badge-gray">{regionAbbr}</span></td>
                             <td style={{ fontWeight: 600 }}>{getUnitName(p.unitId)}</td>
                             <td style={{ fontWeight: 600 }}>{p.name}</td>
@@ -527,13 +519,21 @@ export default function ContractRealization() {
                             <td style={{ textAlign: 'right' }}>Rp {p.actualCostPerUnit?.toLocaleString('id-ID')}</td>
                             <td style={{ textAlign: 'right', fontWeight: 600 }}>Rp {((p.actualQty || 0) * (p.actualCostPerUnit || 0)).toLocaleString('id-ID')}</td>
                           </tr>
-                          );
-                        })}
-                      </tbody>
-                    </table>
-                  </div>
-                );
-              })
+                        );
+                      })}
+                      {sortedProjs.length > 1 && (
+                        <tr style={{ background: '#f8fafc', borderBottom: '3px solid #cbd5e1' }}>
+                          <td colSpan={7} style={{ textAlign: 'right', fontWeight: 'bold' }}>Subtotal Kontrak {contractNum}:</td>
+                          <td style={{ textAlign: 'right', fontWeight: 'bold', color: '#0369a1' }}>Rp {totalContractVal.toLocaleString('id-ID')}</td>
+                        </tr>
+                      )}
+                      {sortedProjs.length === 1 && (
+                        <tr style={{ height: '0', borderBottom: '3px solid #cbd5e1' }}><td colSpan={8} style={{padding:0, border:0}}></td></tr>
+                      )}
+                    </tbody>
+                  );
+                })}
+              </table>
             )}
           </div>
         </div>
