@@ -465,14 +465,15 @@ export default function ContractRealization() {
               <table className="data-table" style={{ fontSize: '0.85rem', margin: 0 }}>
                 <thead style={{ background: '#f1f5f9' }}>
                   <tr>
-                    <th>No Contract</th>
-                    <th>Vendor</th>
                     <th>Region</th>
                     <th>UO</th>
+                    <th>Category</th>
                     <th>Proyek</th>
                     <th style={{ textAlign: 'right' }}>Qty</th>
                     <th style={{ textAlign: 'right' }}>Cost / Unit</th>
                     <th style={{ textAlign: 'right' }}>Total</th>
+                    <th>Vendor</th>
+                    <th>No Contract</th>
                   </tr>
                 </thead>
                 {Object.entries(historyByContract)
@@ -510,25 +511,27 @@ export default function ContractRealization() {
                         const regionAbbr = region ? (region.name.match(/\(([^)]+)\)/)?.[1] || region.name) : '-';
                         return (
                           <tr key={p.id}>
-                            <td style={{ fontWeight: 600, color: '#0f172a' }}>{contractNum}</td>
-                            <td>{vendor}</td>
                             <td style={{ fontWeight: 600 }}><span className="badge badge-gray">{regionAbbr}</span></td>
                             <td style={{ fontWeight: 600 }}>{getUnitName(p.unitId)}</td>
+                            <td><span style={{ fontWeight: 600, fontSize: '0.75rem', color: p.category === 'CAPEX' ? '#0369a1' : '#b45309' }}>{p.category === 'CAPEX' ? 'CPX' : p.category === 'OPEX' ? 'OPX' : p.category}</span></td>
                             <td style={{ fontWeight: 600 }}>{p.name}</td>
                             <td style={{ textAlign: 'right' }}>{p.actualQty}</td>
                             <td style={{ textAlign: 'right' }}>Rp {p.actualCostPerUnit?.toLocaleString('id-ID')}</td>
                             <td style={{ textAlign: 'right', fontWeight: 600 }}>Rp {((p.actualQty || 0) * (p.actualCostPerUnit || 0)).toLocaleString('id-ID')}</td>
+                            <td>{vendor}</td>
+                            <td style={{ fontWeight: 600, color: '#0f172a' }}>{contractNum}</td>
                           </tr>
                         );
                       })}
                       {sortedProjs.length > 1 && (
                         <tr style={{ background: '#f8fafc', borderBottom: '3px solid #cbd5e1' }}>
-                          <td colSpan={7} style={{ textAlign: 'right', fontWeight: 'bold' }}>Subtotal Kontrak {contractNum}:</td>
+                          <td colSpan={6} style={{ textAlign: 'right', fontWeight: 'bold' }}>Subtotal Kontrak {contractNum}:</td>
                           <td style={{ textAlign: 'right', fontWeight: 'bold', color: '#0369a1' }}>Rp {totalContractVal.toLocaleString('id-ID')}</td>
+                          <td colSpan={2}></td>
                         </tr>
                       )}
                       {sortedProjs.length === 1 && (
-                        <tr style={{ height: '0', borderBottom: '3px solid #cbd5e1' }}><td colSpan={8} style={{padding:0, border:0}}></td></tr>
+                        <tr style={{ height: '0', borderBottom: '3px solid #cbd5e1' }}><td colSpan={9} style={{padding:0, border:0}}></td></tr>
                       )}
                     </tbody>
                   );
