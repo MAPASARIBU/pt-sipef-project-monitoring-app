@@ -332,100 +332,98 @@ export default function TenderDocumentSubmission() {
         )}
       </div>
 
-      {(!hasGlobalView || isAdmin) && (
-        <div className="card mb-6" style={{ borderTop: '4px solid var(--primary)', overflowX: 'auto' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
-            <h2 style={{ color: '#1e293b', margin: 0 }}>Daftar Project di OU Terpilih</h2>
-            {isAuthorizedToInput && (
-              <button 
-                className="btn btn-primary" 
-                onClick={handleSave} 
-                disabled={saving || !Object.values(stagedData).some(s => s.checked)}
-              >
-                {saving ? 'Menyimpan...' : 'Save Document Submission'}
-              </button>
-            )}
-          </div>
-
-          {filteredEligibleProjects.length === 0 ? (
-            <p className="text-muted">Tidak ada project yang butuh submission dokumen di OU ini.</p>
-          ) : (
-            <table className="data-table" style={{ fontSize: '0.75rem' }}>
-              <thead style={{ background: '#f8fafc' }}>
-                <tr>
-                  <th style={{ width: '5%' }}>Region</th>
-                  <th style={{ width: '8%' }}>OU / Mill</th>
-                  <th style={{ width: '5%' }}>CTGRY</th>
-                  <th style={{ width: '10%' }}>STASIUN</th>
-                  <th style={{ width: '22%' }}>PROJECT NAME</th>
-                  <th style={{ width: '20%' }}>BoQ Attachment<br/><small className="text-muted" style={{textTransform:'none'}}>(Excel/PDF, Max 4)</small></th>
-                  <th style={{ width: '20%' }}>Drawing Attachment<br/><small className="text-muted" style={{textTransform:'none'}}>(PDF, Max 4)</small></th>
-                  <th style={{ width: '10%' }}>Document Complete</th>
-                  <th style={{ width: '5%', textAlign: 'center' }}>Submit</th>
-                </tr>
-              </thead>
-              <tbody>
-                {filteredEligibleProjects.map(p => {
-                  const stage = stagedData[p.id] || { boqFiles: [], drawingFiles: [], docComplete: '', checked: false };
-                  const unit = data.units.find(u => String(u.id) === String(p.unitId));
-                  const region = data.regions.find(r => unit && r.id === unit.regionId);
-                  const regionAbbr = region ? (region.name.match(/\(([^)]+)\)/)?.[1] || region.name) : '-';
-                  
-                  return (
-                    <tr key={p.id} className={stage.checked ? 'row-selected' : ''} style={{ background: stage.checked ? '#f0fdf4' : 'transparent' }}>
-                      <td style={{ whiteSpace: 'nowrap', textAlign: 'center' }}><span className="badge badge-gray">{regionAbbr}</span></td>
-                      <td style={{ whiteSpace: 'nowrap', textAlign: 'center', fontWeight: 600 }}>{unit ? (unit.abbreviation || unit.name) : '-'}</td>
-                      <td><span style={{ fontWeight: 600, fontSize: '0.75rem', color: p.category === 'CAPEX' ? '#0369a1' : '#b45309' }}>{p.category === 'CAPEX' ? 'CPX' : p.category === 'OPEX' ? 'OPX' : p.category}</span></td>
-                      <td>{p.station || '-'}</td>
-                      <td style={{ fontWeight: 600 }}>{p.name}</td>
-                      
-                      <td>
-                        {isAuthorizedToInput ? (
-                          <input type="file" multiple accept=".xls,.xlsx,.pdf" onChange={e => handleFileChange(p.id, 'boq', e)} style={{ width: '150px' }} />
-                        ) : (
-                          <span className="text-muted">View Only</span>
-                        )}
-                        {stage.boqFiles.length > 0 && <div className="text-success mt-1" style={{ fontSize: '0.7rem' }}>{stage.boqFiles.length} file(s) selected</div>}
-                      </td>
-                      
-                      <td>
-                        {isAuthorizedToInput ? (
-                          <input type="file" multiple accept=".pdf" onChange={e => handleFileChange(p.id, 'drawing', e)} style={{ width: '150px' }} />
-                        ) : (
-                          <span className="text-muted">View Only</span>
-                        )}
-                        {stage.drawingFiles.length > 0 && <div className="text-success mt-1" style={{ fontSize: '0.7rem' }}>{stage.drawingFiles.length} file(s) selected</div>}
-                      </td>
-
-                      <td>
-                        {isAuthorizedToInput ? (
-                          <select className="form-select" style={{ fontSize: '0.75rem', padding: '0.2rem 0.5rem', width: '90px' }} value={stage.docComplete} onChange={e => handleDocCompleteChange(p.id, e.target.value)}>
-                            <option value="">- Pilih -</option>
-                            <option value="Yes">Yes</option>
-                            <option value="No">No</option>
-                          </select>
-                        ) : (
-                          <span className="text-muted">-</span>
-                        )}
-                      </td>
-
-                      <td style={{ textAlign: 'center' }}>
-                        <input 
-                          type="checkbox" 
-                          style={{ width: '1.2rem', height: '1.2rem', cursor: 'pointer' }}
-                          checked={stage.checked}
-                          onChange={(e) => handleCheckChange(p.id, e.target.checked)}
-                          disabled={stage.docComplete !== 'Yes' || !isAuthorizedToInput}
-                        />
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
+      <div className="card mb-6" style={{ borderTop: '4px solid var(--primary)', overflowX: 'auto' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
+          <h2 style={{ color: '#1e293b', margin: 0 }}>Daftar Project Document Belum Complete</h2>
+          {isAuthorizedToInput && (
+            <button 
+              className="btn btn-primary" 
+              onClick={handleSave} 
+              disabled={saving || !Object.values(stagedData).some(s => s.checked)}
+            >
+              {saving ? 'Menyimpan...' : 'Save Document Submission'}
+            </button>
           )}
         </div>
-      )}
+
+        {filteredEligibleProjects.length === 0 ? (
+          <p className="text-muted">Tidak ada project yang butuh submission dokumen di OU ini.</p>
+        ) : (
+          <table className="data-table" style={{ fontSize: '0.75rem' }}>
+            <thead style={{ background: '#f8fafc' }}>
+              <tr>
+                <th style={{ width: '5%' }}>Region</th>
+                <th style={{ width: '8%' }}>OU / Mill</th>
+                <th style={{ width: '5%' }}>CTGRY</th>
+                <th style={{ width: '10%' }}>STASIUN</th>
+                <th style={{ width: '22%' }}>PROJECT NAME</th>
+                <th style={{ width: '20%' }}>BoQ Attachment<br/><small className="text-muted" style={{textTransform:'none'}}>(Excel/PDF, Max 4)</small></th>
+                <th style={{ width: '20%' }}>Drawing Attachment<br/><small className="text-muted" style={{textTransform:'none'}}>(PDF, Max 4)</small></th>
+                <th style={{ width: '10%' }}>Document Complete</th>
+                <th style={{ width: '5%', textAlign: 'center' }}>Submit</th>
+              </tr>
+            </thead>
+            <tbody>
+              {filteredEligibleProjects.map(p => {
+                const stage = stagedData[p.id] || { boqFiles: [], drawingFiles: [], docComplete: '', checked: false };
+                const unit = data.units.find(u => String(u.id) === String(p.unitId));
+                const region = data.regions.find(r => unit && r.id === unit.regionId);
+                const regionAbbr = region ? (region.name.match(/\(([^)]+)\)/)?.[1] || region.name) : '-';
+                
+                return (
+                  <tr key={p.id} className={stage.checked ? 'row-selected' : ''} style={{ background: stage.checked ? '#f0fdf4' : 'transparent' }}>
+                    <td style={{ whiteSpace: 'nowrap', textAlign: 'center' }}><span className="badge badge-gray">{regionAbbr}</span></td>
+                    <td style={{ whiteSpace: 'nowrap', textAlign: 'center', fontWeight: 600 }}>{unit ? (unit.abbreviation || unit.name) : '-'}</td>
+                    <td><span style={{ fontWeight: 600, fontSize: '0.75rem', color: p.category === 'CAPEX' ? '#0369a1' : '#b45309' }}>{p.category === 'CAPEX' ? 'CPX' : p.category === 'OPEX' ? 'OPX' : p.category}</span></td>
+                    <td>{p.station || '-'}</td>
+                    <td style={{ fontWeight: 600 }}>{p.name}</td>
+                    
+                    <td>
+                      {isAuthorizedToInput ? (
+                        <input type="file" multiple accept=".xls,.xlsx,.pdf" onChange={e => handleFileChange(p.id, 'boq', e)} style={{ width: '150px' }} />
+                      ) : (
+                        <span className="text-muted">View Only</span>
+                      )}
+                      {stage.boqFiles.length > 0 && <div className="text-success mt-1" style={{ fontSize: '0.7rem' }}>{stage.boqFiles.length} file(s) selected</div>}
+                    </td>
+                    
+                    <td>
+                      {isAuthorizedToInput ? (
+                        <input type="file" multiple accept=".pdf" onChange={e => handleFileChange(p.id, 'drawing', e)} style={{ width: '150px' }} />
+                      ) : (
+                        <span className="text-muted">View Only</span>
+                      )}
+                      {stage.drawingFiles.length > 0 && <div className="text-success mt-1" style={{ fontSize: '0.7rem' }}>{stage.drawingFiles.length} file(s) selected</div>}
+                    </td>
+
+                    <td>
+                      {isAuthorizedToInput ? (
+                        <select className="form-select" style={{ fontSize: '0.75rem', padding: '0.2rem 0.5rem', width: '90px' }} value={stage.docComplete} onChange={e => handleDocCompleteChange(p.id, e.target.value)}>
+                          <option value="">- Pilih -</option>
+                          <option value="Yes">Yes</option>
+                          <option value="No">No</option>
+                        </select>
+                      ) : (
+                        <span className="text-muted">-</span>
+                      )}
+                    </td>
+
+                    <td style={{ textAlign: 'center' }}>
+                      <input 
+                        type="checkbox" 
+                        style={{ width: '1.2rem', height: '1.2rem', cursor: 'pointer' }}
+                        checked={stage.checked}
+                        onChange={(e) => handleCheckChange(p.id, e.target.checked)}
+                        disabled={stage.docComplete !== 'Yes' || !isAuthorizedToInput}
+                      />
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        )}
+      </div>
 
       {filteredCompletedProjects.length > 0 && (
         <div className="card mb-6" style={{ borderTop: '4px solid var(--success)', overflowX: 'auto' }}>
