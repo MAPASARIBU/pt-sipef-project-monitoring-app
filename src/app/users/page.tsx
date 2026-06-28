@@ -14,10 +14,6 @@ export default function UserManagement() {
   const [unitId, setUnitId] = useState('');
   const [regionId, setRegionId] = useState('');
 
-  useEffect(() => {
-    fetchData();
-  }, []);
-
   const fetchData = async () => {
     const res = await fetch('/api/db');
     const db = await res.json();
@@ -49,6 +45,10 @@ export default function UserManagement() {
       window.location.href = '/';
     }
   };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   const handleSave = async (e: React.FormEvent) => {
     e.preventDefault();
