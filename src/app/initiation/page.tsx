@@ -240,6 +240,7 @@ export default function ProjectInitiation() {
   const activeUnit = data.units.find(u => u.id === activeUnitId);
   const isRmo = roleName.includes('rmo');
   const isEngineeringHO = roleName.includes('engineering ho');
+  const isPurchasing = roleName.includes('purchasing');
   
   const isLockedToRegion = !!(activeUnit && !hasGlobalView) || isRmo || hasRegionalView;
   const isLockedToUnit = !!(activeUnit && !isRmo && !hasGlobalView && !hasRegionalView);
@@ -251,7 +252,7 @@ export default function ProjectInitiation() {
     <div>
       <div className="page-header mb-6" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <h1 className="page-title">1. Project Initiation</h1>
-        {!isEngineeringHO && (
+        {(!isEngineeringHO && !isPurchasing) && (
           <button 
             className="btn btn-primary" 
             onClick={openNewProjectModal}

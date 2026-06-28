@@ -268,7 +268,7 @@ export default function UserManagement() {
               {(() => {
                 const selectedRoleName = data.roles.find(r => r.id === roleId)?.name?.toLowerCase() || '';
                 const isRegionalRole = selectedRoleName.includes('region') || selectedRoleName.includes('rce');
-                const isGlobalRole = selectedRoleName.includes('ho') || selectedRoleName.includes('director') || selectedRoleName.includes('head of');
+                const isGlobalRole = selectedRoleName.includes('ho') || selectedRoleName.includes('director') || selectedRoleName.includes('head of') || selectedRoleName.includes('purchasing');
 
                 if (isRegionalRole) {
                   return (
@@ -367,7 +367,7 @@ export default function UserManagement() {
             {(() => {
               const selectedRoleName = data.roles.find(r => r.id === editRoleId)?.name?.toLowerCase() || '';
               const isRegionalRole = selectedRoleName.includes('region') || selectedRoleName.includes('rce');
-              const isGlobalRole = selectedRoleName.includes('ho') || selectedRoleName.includes('director') || selectedRoleName.includes('head of');
+              const isGlobalRole = selectedRoleName.includes('ho') || selectedRoleName.includes('director') || selectedRoleName.includes('head of') || selectedRoleName.includes('purchasing');
 
               if (isRegionalRole) {
                 return (

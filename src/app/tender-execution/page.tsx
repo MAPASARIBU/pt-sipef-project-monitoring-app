@@ -86,7 +86,7 @@ export default function TenderExecution() {
   const isEngineeringHO = roleName.includes('engineering ho');
   const isPurchasing = roleName.includes('purchasing');
   const isDirector = roleName.includes('director engineering');
-  const isAuthorizedToInput = isAdmin || isEngineeringHO || isPurchasing || isDirector;
+  const isAuthorizedToInput = isAdmin || isEngineeringHO || isDirector;
 
   const isRmo = roleName.includes('rmo');
   const hasGlobalView = isAdmin || isEngineeringHO || isPurchasing || isDirector || roleName.includes('head of operation');
