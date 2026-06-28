@@ -1,6 +1,8 @@
 'use client';
 import { useEffect, useState } from 'react';
 import { DatabaseSchema, Project, InvitedPT, Unit } from '@/lib/db';
+import JSZip from 'jszip';
+import { saveAs } from 'file-saver';
 
 export default function TenderExecution() {
   const [data, setData] = useState<DatabaseSchema | null>(null);
@@ -494,32 +496,63 @@ export default function TenderExecution() {
                       <button 
                         className="btn btn-secondary" 
                         style={{ fontSize: '0.8rem', padding: '0.4rem 0.8rem', display: 'flex', alignItems: 'center', gap: '0.4rem', color: '#0369a1', borderColor: '#bae6fd', background: '#f0f9ff' }}
-                        onClick={() => {
-                          const allFiles: string[] = [];
+                        onClick={async () => {
+                          if (downloadingZip) return;
+                          
+                          let hasFiles = false;
                           vendorProjects.forEach(p => {
-                            if (p.boqFiles) allFiles.push(...p.boqFiles);
-                            if (p.drawingFiles) allFiles.push(...p.drawingFiles);
+                            if ((p.boqFiles && p.boqFiles.length > 0) || (p.drawingFiles && p.drawingFiles.length > 0)) {
+                              hasFiles = true;
+                            }
                           });
-                          if (allFiles.length === 0) {
+
+                          if (!hasFiles) {
                             alert('Tidak ada dokumen untuk diunduh.');
                             return;
                           }
-                          if (!confirm(`Terdapat ${allFiles.length} dokumen. Lanjutkan mengunduh semua? Browser mungkin akan meminta izin multiple downloads.`)) return;
+
+                          if (!confirm(`ZIP akan dibuat untuk ${vendorProjects.length} project. Lanjutkan?`)) return;
                           
-                          allFiles.forEach((fileUrl, index) => {
-                            setTimeout(() => {
-                              const link = document.createElement('a');
-                              link.href = fileUrl;
-                              link.download = fileUrl.split('/').pop() || 'download';
-                              link.target = '_blank';
-                              document.body.appendChild(link);
-                              link.click();
-                              document.body.removeChild(link);
-                            }, index * 800);
-                          });
+                          setDownloadingZip(true);
+                          try {
+                            const zip = new JSZip();
+                            
+                            for (const p of vendorProjects) {
+                              const projectFolder = zip.folder(p.name);
+                              if (!projectFolder) continue;
+
+                              const downloadFile = async (fileUrl: string) => {
+                                try {
+                                  const response = await fetch(fileUrl);
+                                  const blob = await response.blob();
+                                  const fileName = fileUrl.split('/').pop() || 'file';
+                                  const cleanName = fileName.includes('-') ? fileName.split('-').slice(1).join('-') : fileName;
+                                  projectFolder.file(cleanName, blob);
+                                } catch (err) {
+                                  console.error('Failed to download', fileUrl, err);
+                                }
+                              };
+
+                              if (p.boqFiles) {
+                                for (const f of p.boqFiles) await downloadFile(f);
+                              }
+                              if (p.drawingFiles) {
+                                for (const f of p.drawingFiles) await downloadFile(f);
+                              }
+                            }
+                            
+                            const content = await zip.generateAsync({ type: 'blob' });
+                            saveAs(content, `Dokumen_${vendorName.replace(/\s+/g, '_')}.zip`);
+                            
+                          } catch (err) {
+                            console.error(err);
+                            alert('Terjadi kesalahan saat membuat ZIP');
+                          } finally {
+                            setDownloadingZip(false);
+                          }
                         }}
                       >
-                        📥 Unduh Semua Dokumen
+                        {downloadingZip ? '⏳ Membuat ZIP...' : '📥 Unduh ZIP Dokumen'}
                       </button>
                     </div>
                     <div style={{ overflowX: 'auto' }}>
