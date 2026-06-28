@@ -478,8 +478,21 @@ export default function ContractRealization() {
                 </thead>
                 {Object.entries(historyByContract)
                   .sort((a, b) => {
-                    const maxIdA = Math.max(...a[1].map(p => Number(p.id) || 0));
-                    const maxIdB = Math.max(...b[1].map(p => Number(p.id) || 0));
+                    const projsA = a[1];
+                    const projsB = b[1];
+                    const unitA = data.units.find(x => String(x.id) === String(projsA[0].unitId));
+                    const unitB = data.units.find(x => String(x.id) === String(projsB[0].unitId));
+                    const regionA = data.regions.find(r => r.id === unitA?.regionId);
+                    const regionB = data.regions.find(r => r.id === unitB?.regionId);
+                    
+                    const order: { [key: string]: number } = { 'NORTH SUMATERA (NS)': 1, 'BENGKULU (BK)': 2, 'SOUTH SUMATERA (SS)': 3 };
+                    const oA = regionA ? (order[regionA.name] || 99) : 99;
+                    const oB = regionB ? (order[regionB.name] || 99) : 99;
+                    
+                    if (oA !== oB) return oA - oB;
+                    
+                    const maxIdA = Math.max(...projsA.map(p => Number(p.id) || 0));
+                    const maxIdB = Math.max(...projsB.map(p => Number(p.id) || 0));
                     return maxIdB - maxIdA;
                   })
                   .map(([contractNum, projs]) => {
