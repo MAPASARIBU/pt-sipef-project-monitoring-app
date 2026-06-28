@@ -82,7 +82,7 @@ export default function Login() {
           <p className="text-muted" style={{ marginTop: '0.5rem' }}>Project Monitoring System</p>
         </div>
 
-        <form onSubmit={handleLogin} style={{ textAlign: 'left' }}>
+        <form onSubmit={handleLogin} style={{ textAlign: 'left' }} autoComplete="off">
           {error && <div style={{ color: 'red', background: '#ffebee', padding: '0.5rem', borderRadius: '4px', marginBottom: '1rem', textAlign: 'center', fontSize: '0.9rem' }}>{error}</div>}
           
           <div className="form-group mb-4">
@@ -93,8 +93,8 @@ export default function Login() {
               onChange={e => setSelectedUnitId(e.target.value)}
               required
             >
-              <option value="">-- Pilih Lokasi --</option>
-              <option value="HO">HEAD OFFICE (HO)</option>
+              <option value="">-- Pilih Akses Login --</option>
+              <option value="HO" style={{ fontWeight: 'bold' }}>HEAD OFFICE (HO)</option>
               {regions.length > 0 && (
                 <optgroup label="Region">
                   {regions.filter(r => r.id !== '1').map(r => (
@@ -121,6 +121,7 @@ export default function Login() {
               onChange={e => setUsername(e.target.value)} 
               placeholder="Masukkan username..."
               required 
+              autoComplete="new-password"
             />
           </div>
           <div className="form-group">
@@ -132,6 +133,7 @@ export default function Login() {
               onChange={e => setPassword(e.target.value)} 
               placeholder="Masukkan password..."
               required 
+              autoComplete="new-password"
             />
           </div>
           <button type="submit" className="btn btn-primary w-full" style={{ marginTop: '1rem', padding: '0.75rem' }} disabled={loading}>
