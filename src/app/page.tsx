@@ -276,56 +276,96 @@ export default function Dashboard() {
         </div>
       </div>
       
-      <div className="grid grid-cols-4 gap-4 mb-6">
-        <div className="card" style={{ padding: '0.5rem 1rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <div className="form-label text-muted" style={{ fontSize: '0.8rem', margin: 0 }}>Total Initiation</div>
-          <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--primary)' }}>{totalProjects}</div>
-        </div>
-        <div className="card" style={{ padding: '0.5rem 1rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <div className="form-label text-muted" style={{ fontSize: '0.8rem', margin: 0 }}>Submission (BoQ)</div>
-          <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--primary)' }}>{submissionOps}</div>
-        </div>
-        <div className="card" style={{ padding: '0.5rem 1rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <div className="form-label text-muted" style={{ fontSize: '0.8rem', margin: 0 }}>Masuk HO Eng</div>
-          <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--primary)' }}>{masukHO}</div>
-        </div>
-        <div className="card" style={{ padding: '0.5rem 1rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <div className="form-label text-muted" style={{ fontSize: '0.8rem', margin: 0 }}>Tender PSD</div>
-          <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--primary)' }}>{tenderPsd}</div>
-        </div>
-        <div className="card" style={{ padding: '0.5rem 1rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <div className="form-label text-muted" style={{ fontSize: '0.8rem', margin: 0 }}>Evaluasi Bidding</div>
-          <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--primary)' }}>{evalBidding}</div>
-        </div>
-        <div className="card" style={{ padding: '0.5rem 1rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <div className="form-label text-muted" style={{ fontSize: '0.8rem', margin: 0 }}>Sudah Pemenang</div>
-          <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--primary)' }}>{winner}</div>
-        </div>
-        <div className="card" style={{ padding: '0.5rem 1rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <div className="form-label text-muted" style={{ fontSize: '0.8rem', margin: 0 }}>Kontrak Terbit</div>
-          <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--primary)' }}>{contract}</div>
-        </div>
-        <div className="card" style={{ padding: '0.5rem 1rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <div className="form-label text-muted" style={{ fontSize: '0.8rem', margin: 0 }}>Create PR</div>
-          <div style={{ fontSize: '1.25rem', fontWeight: 700, color: '#8b5cf6' }}>{createPRCount}</div>
-        </div>
-        <div className="card" style={{ padding: '0.5rem 1rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <div className="form-label text-muted" style={{ fontSize: '0.8rem', margin: 0 }}>Terbit PO</div>
-          <div style={{ fontSize: '1.25rem', fontWeight: 700, color: '#8b5cf6' }}>{terbitPOCount}</div>
-        </div>
-        <div className="card" style={{ padding: '0.5rem 1rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <div className="form-label text-muted" style={{ fontSize: '0.8rem', margin: 0 }}>On Progress</div>
-          <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--secondary)' }}>{onProgress}</div>
-        </div>
-        <div className="card" style={{ padding: '0.5rem 1rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <div className="form-label text-muted" style={{ fontSize: '0.8rem', margin: 0 }}>Selesai (Close)</div>
-          <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--success)' }}>{closed}</div>
-        </div>
-        <div className="card" style={{ padding: '0.5rem 1rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <div className="form-label text-muted" style={{ fontSize: '0.8rem', margin: 0 }}>Sudah Ada No SR</div>
-          <div style={{ fontSize: '1.25rem', fontWeight: 700, color: '#10b981' }}>{srDoneCount}</div>
-        </div>
-      </div>
+      {/* Metric Cards */}
+      {(() => {
+        const getPct = (val: number) => totalProjects > 0 ? Math.round((val / totalProjects) * 100) + '%' : '0%';
+        
+        return (
+          <div className="grid grid-cols-4 gap-4 mb-6">
+            <div className="card" style={{ padding: '0.5rem 1rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <div className="form-label text-muted" style={{ fontSize: '0.8rem', margin: 0 }}>Total Initiation</div>
+              <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--primary)' }}>{totalProjects}</div>
+            </div>
+            <div className="card" style={{ padding: '0.5rem 1rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <div className="form-label text-muted" style={{ fontSize: '0.8rem', margin: 0 }}>Submission (BoQ)</div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--primary)' }}>{submissionOps}</div>
+                <div style={{ fontSize: '0.8rem', fontWeight: 600, color: '#94a3b8' }}>{getPct(submissionOps)}</div>
+              </div>
+            </div>
+            <div className="card" style={{ padding: '0.5rem 1rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <div className="form-label text-muted" style={{ fontSize: '0.8rem', margin: 0 }}>Masuk HO Eng</div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--primary)' }}>{masukHO}</div>
+                <div style={{ fontSize: '0.8rem', fontWeight: 600, color: '#94a3b8' }}>{getPct(masukHO)}</div>
+              </div>
+            </div>
+            <div className="card" style={{ padding: '0.5rem 1rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <div className="form-label text-muted" style={{ fontSize: '0.8rem', margin: 0 }}>Tender PSD</div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--primary)' }}>{tenderPsd}</div>
+                <div style={{ fontSize: '0.8rem', fontWeight: 600, color: '#94a3b8' }}>{getPct(tenderPsd)}</div>
+              </div>
+            </div>
+            <div className="card" style={{ padding: '0.5rem 1rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <div className="form-label text-muted" style={{ fontSize: '0.8rem', margin: 0 }}>Evaluasi Bidding</div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--primary)' }}>{evalBidding}</div>
+                <div style={{ fontSize: '0.8rem', fontWeight: 600, color: '#94a3b8' }}>{getPct(evalBidding)}</div>
+              </div>
+            </div>
+            <div className="card" style={{ padding: '0.5rem 1rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <div className="form-label text-muted" style={{ fontSize: '0.8rem', margin: 0 }}>Sudah Pemenang</div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--primary)' }}>{winner}</div>
+                <div style={{ fontSize: '0.8rem', fontWeight: 600, color: '#94a3b8' }}>{getPct(winner)}</div>
+              </div>
+            </div>
+            <div className="card" style={{ padding: '0.5rem 1rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <div className="form-label text-muted" style={{ fontSize: '0.8rem', margin: 0 }}>Kontrak Terbit</div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--primary)' }}>{contract}</div>
+                <div style={{ fontSize: '0.8rem', fontWeight: 600, color: '#94a3b8' }}>{getPct(contract)}</div>
+              </div>
+            </div>
+            <div className="card" style={{ padding: '0.5rem 1rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <div className="form-label text-muted" style={{ fontSize: '0.8rem', margin: 0 }}>Create PR</div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <div style={{ fontSize: '1.25rem', fontWeight: 700, color: '#8b5cf6' }}>{createPRCount}</div>
+                <div style={{ fontSize: '0.8rem', fontWeight: 600, color: '#c4b5fd' }}>{getPct(createPRCount)}</div>
+              </div>
+            </div>
+            <div className="card" style={{ padding: '0.5rem 1rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <div className="form-label text-muted" style={{ fontSize: '0.8rem', margin: 0 }}>Terbit PO</div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <div style={{ fontSize: '1.25rem', fontWeight: 700, color: '#8b5cf6' }}>{terbitPOCount}</div>
+                <div style={{ fontSize: '0.8rem', fontWeight: 600, color: '#c4b5fd' }}>{getPct(terbitPOCount)}</div>
+              </div>
+            </div>
+            <div className="card" style={{ padding: '0.5rem 1rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <div className="form-label text-muted" style={{ fontSize: '0.8rem', margin: 0 }}>On Progress</div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--secondary)' }}>{onProgress}</div>
+                <div style={{ fontSize: '0.8rem', fontWeight: 600, color: '#93c5fd' }}>{getPct(onProgress)}</div>
+              </div>
+            </div>
+            <div className="card" style={{ padding: '0.5rem 1rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <div className="form-label text-muted" style={{ fontSize: '0.8rem', margin: 0 }}>Selesai (Close)</div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--success)' }}>{closed}</div>
+                <div style={{ fontSize: '0.8rem', fontWeight: 600, color: '#86efac' }}>{getPct(closed)}</div>
+              </div>
+            </div>
+            <div className="card" style={{ padding: '0.5rem 1rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <div className="form-label text-muted" style={{ fontSize: '0.8rem', margin: 0 }}>Sudah Ada No SR</div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <div style={{ fontSize: '1.25rem', fontWeight: 700, color: '#10b981' }}>{srDoneCount}</div>
+                <div style={{ fontSize: '0.8rem', fontWeight: 600, color: '#6ee7b7' }}>{getPct(srDoneCount)}</div>
+              </div>
+            </div>
+          </div>
+        );
+      })()}
 
       <div className="grid grid-cols-2 gap-6 mb-6">
         {/* Category Card */}
