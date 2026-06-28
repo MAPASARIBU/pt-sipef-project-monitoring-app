@@ -245,64 +245,66 @@ export default function ActualProgress() {
 
       <>
         {/* --- TABLE 1: CONTRACTED PROJECTS (PR & PO) --- */}
-          <div className="card mb-6" style={{ borderTop: '4px solid var(--primary)', overflowX: 'auto' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
-              <div>
-                <h2 style={{ margin: 0, color: '#0369a1' }}>Daftar Project Contracted</h2>
-                <p className="text-muted" style={{ fontSize: '0.85rem', marginTop: '0.5rem' }}>Isi Nomor PR terlebih dahulu, setelah itu Nomor PO bisa diisi.</p>
+          {(!isForbiddenFromMonitoring || isAdmin) && (
+            <div className="card mb-6" style={{ borderTop: '4px solid var(--primary)', overflowX: 'auto' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
+                <div>
+                  <h2 style={{ margin: 0, color: '#0369a1' }}>Daftar Project Contracted</h2>
+                  <p className="text-muted" style={{ fontSize: '0.85rem', marginTop: '0.5rem' }}>Isi Nomor PR terlebih dahulu, setelah itu Nomor PO bisa diisi.</p>
+                </div>
+                {isAuthorizedToInput && (
+                  <button type="button" className="btn btn-primary" onClick={() => handleSaveToDb('prpo')} disabled={saving}>
+                    {saving ? 'Saving...' : 'Save PR & PO'}
+                  </button>
+                )}
               </div>
-              {isAuthorizedToInput && (
-                <button type="button" className="btn btn-primary" onClick={() => handleSaveToDb('prpo')} disabled={saving}>
-                  {saving ? 'Saving...' : 'Save PR & PO'}
-                </button>
+              
+              {contractedProjects.length === 0 ? (
+                <div className="text-muted p-4 text-center border rounded">Belum ada project yang terkontrak di OU ini.</div>
+              ) : (
+                <table className="data-table" style={{ fontSize: '0.85rem' }}>
+                  <thead style={{ background: '#f0f9ff' }}>
+                    <tr>
+                      <th style={{ width: '5%' }}>Region</th>
+                      <th style={{ width: '8%' }}>UO / Mill</th>
+                      <th style={{ width: '27%' }}>Nama Project</th>
+                      <th style={{ width: '15%', textAlign: 'right' }}>Harga Disetujui (Rp)</th>
+                      <th style={{ width: '15%' }}>No. Contract</th>
+                      <th style={{ width: '15%' }}>No. PR</th>
+                      <th style={{ width: '15%' }}>No. PO</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {contractedProjects.map(p => {
+                      const initP = initialData?.projects.find(x => x.id === p.id);
+                      const isLocked = Boolean(initP?.prNo && initP?.poNo);
+                      const u = data.units.find(x => String(x.id) === String(p.unitId));
+                      const region = data.regions.find(r => r.id === u?.regionId);
+                      const regionAbbr = region ? (region.name.match(/\(([^)]+)\)/)?.[1] || region.name) : '-';
+                      return (
+                      <tr key={`t1-${p.id}`}>
+                        <td style={{ fontWeight: 600 }}><span className="badge badge-gray">{regionAbbr}</span></td>
+                        <td style={{ fontWeight: 600 }}>{getUnitName(p.unitId)}</td>
+                        <td style={{ fontWeight: 600 }}>{p.name}</td>
+                        <td style={{ textAlign: 'right', color: '#0369a1', fontWeight: 600 }}>{(p.finalTenderPrice || 0).toLocaleString('id-ID')}</td>
+                        <td>{p.contractNumber}</td>
+                        <td>
+                          <input type="text" className="form-input" style={{ padding: '0.4rem', fontSize: '0.85rem', background: (!isAuthorizedToInput || isLocked) ? '#f8fafc' : '#fff' }} placeholder="Input PR No..." value={p.prNo || ''} onChange={e => updateProject(p.id, { prNo: e.target.value })} disabled={!isAuthorizedToInput || isLocked} />
+                        </td>
+                        <td>
+                          <input type="text" className="form-input" style={{ padding: '0.4rem', fontSize: '0.85rem', background: (!isAuthorizedToInput || !p.prNo || isLocked) ? '#f8fafc' : '#fff' }} placeholder="Input PO No..." value={p.poNo || ''} onChange={e => updateProject(p.id, { poNo: e.target.value })} disabled={!isAuthorizedToInput || !p.prNo || isLocked} />
+                        </td>
+                      </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
               )}
             </div>
-            
-            {contractedProjects.length === 0 ? (
-              <div className="text-muted p-4 text-center border rounded">Belum ada project yang terkontrak di OU ini.</div>
-            ) : (
-              <table className="data-table" style={{ fontSize: '0.85rem' }}>
-                <thead style={{ background: '#f0f9ff' }}>
-                  <tr>
-                    <th style={{ width: '5%' }}>Region</th>
-                    <th style={{ width: '8%' }}>UO / Mill</th>
-                    <th style={{ width: '27%' }}>Nama Project</th>
-                    <th style={{ width: '15%', textAlign: 'right' }}>Harga Disetujui (Rp)</th>
-                    <th style={{ width: '15%' }}>No. Contract</th>
-                    <th style={{ width: '15%' }}>No. PR</th>
-                    <th style={{ width: '15%' }}>No. PO</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {contractedProjects.map(p => {
-                    const initP = initialData?.projects.find(x => x.id === p.id);
-                    const isLocked = Boolean(initP?.prNo && initP?.poNo);
-                    const u = data.units.find(x => String(x.id) === String(p.unitId));
-                    const region = data.regions.find(r => r.id === u?.regionId);
-                    const regionAbbr = region ? (region.name.match(/\(([^)]+)\)/)?.[1] || region.name) : '-';
-                    return (
-                    <tr key={`t1-${p.id}`}>
-                      <td style={{ fontWeight: 600 }}><span className="badge badge-gray">{regionAbbr}</span></td>
-                      <td style={{ fontWeight: 600 }}>{getUnitName(p.unitId)}</td>
-                      <td style={{ fontWeight: 600 }}>{p.name}</td>
-                      <td style={{ textAlign: 'right', color: '#0369a1', fontWeight: 600 }}>{(p.finalTenderPrice || 0).toLocaleString('id-ID')}</td>
-                      <td>{p.contractNumber}</td>
-                      <td>
-                        <input type="text" className="form-input" style={{ padding: '0.4rem', fontSize: '0.85rem', background: (!isAuthorizedToInput || isLocked) ? '#f8fafc' : '#fff' }} placeholder="Input PR No..." value={p.prNo || ''} onChange={e => updateProject(p.id, { prNo: e.target.value })} disabled={!isAuthorizedToInput || isLocked} />
-                      </td>
-                      <td>
-                        <input type="text" className="form-input" style={{ padding: '0.4rem', fontSize: '0.85rem', background: (!isAuthorizedToInput || !p.prNo || isLocked) ? '#f8fafc' : '#fff' }} placeholder="Input PO No..." value={p.poNo || ''} onChange={e => updateProject(p.id, { poNo: e.target.value })} disabled={!isAuthorizedToInput || !p.prNo || isLocked} />
-                      </td>
-                    </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
-            )}
-          </div>
+          )}
 
           {/* --- TABLE 2: MONITORING REALISATION LAPANGAN (BASTL & PROGRESS) --- */}
-          {monitoringProjects.length > 0 && (
+          {(!isForbiddenFromMonitoring || isAdmin) && monitoringProjects.length > 0 && (
             <div className="card mb-6" style={{ borderTop: '4px solid #10b981', overflowX: 'auto' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
                 <div>
