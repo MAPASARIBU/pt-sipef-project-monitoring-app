@@ -487,9 +487,41 @@ export default function TenderExecution() {
                 if (vendorProjects.length === 0) return null;
                 return (
                   <div key={vendorName} className="card" style={{ background: '#f8fafc', border: '1px solid #e2e8f0', padding: '1.5rem', margin: 0 }}>
-                    <h3 style={{ marginTop: 0, marginBottom: '1rem', color: '#0f172a', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                      <span style={{ fontSize: '1.2rem' }}>🏢</span> {vendorName}
-                    </h3>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
+                      <h3 style={{ margin: 0, color: '#0f172a', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                        <span style={{ fontSize: '1.2rem' }}>🏢</span> {vendorName}
+                      </h3>
+                      <button 
+                        className="btn btn-secondary" 
+                        style={{ fontSize: '0.8rem', padding: '0.4rem 0.8rem', display: 'flex', alignItems: 'center', gap: '0.4rem', color: '#0369a1', borderColor: '#bae6fd', background: '#f0f9ff' }}
+                        onClick={() => {
+                          const allFiles: string[] = [];
+                          vendorProjects.forEach(p => {
+                            if (p.boqFiles) allFiles.push(...p.boqFiles);
+                            if (p.drawingFiles) allFiles.push(...p.drawingFiles);
+                          });
+                          if (allFiles.length === 0) {
+                            alert('Tidak ada dokumen untuk diunduh.');
+                            return;
+                          }
+                          if (!confirm(`Terdapat ${allFiles.length} dokumen. Lanjutkan mengunduh semua? Browser mungkin akan meminta izin multiple downloads.`)) return;
+                          
+                          allFiles.forEach((fileUrl, index) => {
+                            setTimeout(() => {
+                              const link = document.createElement('a');
+                              link.href = fileUrl;
+                              link.download = fileUrl.split('/').pop() || 'download';
+                              link.target = '_blank';
+                              document.body.appendChild(link);
+                              link.click();
+                              document.body.removeChild(link);
+                            }, index * 800);
+                          });
+                        }}
+                      >
+                        📥 Unduh Semua Dokumen
+                      </button>
+                    </div>
                     <div style={{ overflowX: 'auto' }}>
                       <table className="data-table" style={{ fontSize: '0.85rem', margin: 0, minWidth: '1000px' }}>
                         <thead style={{ background: '#e2e8f0' }}>
