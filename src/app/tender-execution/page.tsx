@@ -34,6 +34,7 @@ export default function TenderExecution() {
   const [histUnitId, setHistUnitId] = useState('');
   const [histCategory, setHistCategory] = useState('');
   const [groupByVendor, setGroupByVendor] = useState(false);
+  const [downloadingZip, setDownloadingZip] = useState(false);
 
   useEffect(() => {
     const getCookie = (name: string) => {
