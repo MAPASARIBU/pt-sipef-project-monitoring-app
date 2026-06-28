@@ -53,7 +53,7 @@ export default function Login() {
         // Set a cookie manually for the middleware to read
         document.cookie = `auth=${username}; path=/; max-age=86400`; // 1 day expiration
         document.cookie = `loginUnitId=${finalLoginUnitId}; path=/; max-age=86400`;
-        router.push('/');
+        window.location.href = '/';
       } else {
         setError('Username atau Password salah!');
         setLoading(false);
