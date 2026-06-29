@@ -541,6 +541,7 @@ export default function Dashboard() {
                         <tr key={p.id}>
                           <td style={{ padding: '0.4rem 0.75rem' }}>{regionName}</td>
                           <td style={{ padding: '0.4rem 0.75rem' }}>{unitName}</td>
+                          <td style={{ padding: '0.4rem 0.75rem' }}>{p.category}</td>
                           <td style={{ padding: '0.4rem 0.75rem', fontWeight: 500 }}>
                             {p.bastlDate ? (
                               <button 
